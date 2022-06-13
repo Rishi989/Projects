@@ -1,0 +1,103 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    /* background-color: black; */
+}
+body{
+    background-color: black;
+}
+#head{
+    
+    
+    background-color: rgb(67, 113, 98);
+    text-align: center;
+    min-width: 200px;
+    width: 100vw;
+    
+    
+    
+
+}
+
+#heading{
+    font-size: 3rem;
+    padding: 5px;
+    font-family: 'Fascinate', cursive;
+    color: rgb(190, 235, 235);
+}
+
+.container{
+    /* border: 2px solid; */
+    
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(124, 142, 142);
+    width: 35rem;
+    min-width: 200px;
+    min-height: 520px;
+    margin: auto;
+    align-content: center;
+
+
+}
+.Input{
+    padding: 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.Input input{
+    border-radius: 50px;
+    border: 3px solid rgb(33, 59, 1);
+    width: 90%;
+    background-color: rgb(171, 244, 211);
+    padding: 5px;
+    height: 2rem;
+}
+button {
+    background-color: rgb(124, 142, 142);
+    border: none;
+    height: 40px;
+    margin-top: -5px;
+    cursor: pointer;
+   
+
+
+}
+.Input img{
+    height: 40px;
+    
+}
+.elements{
+    display: flex;
+    justify-content: center;
+    margin: .3rem;
+
+}
+.Etext{
+    border-radius: 50px;
+
+    background-color: rgb(17, 67, 67);
+    color: aquamarine;
+    padding: 10px;
+    width: 80%;
+    height: 2rem;
+}
+
+.elements img{
+    height: 30px;
+    margin-left: 5px
+
+}
+
+
+
+
+
+@media  screen and(max-width: 400px) {
+    #head{
+        min-width: 400px;
+    }
+}
