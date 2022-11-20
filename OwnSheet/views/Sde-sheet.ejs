@@ -1,0 +1,89 @@
+<html>
+    <head>
+
+
+        
+        <link rel="stylesheet" href="css/home.css" type="text/css">
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+        <title>OWN-SHeeT</title>
+
+    </head>
+    <body>
+        <header>
+            <h1>OWN-SHeeT</h1> 
+            <a href = '/sign-out'>
+                <h1>Sign-out</h1>
+            </a>
+        </header>
+            
+
+        <main>
+            <div id = "topic">
+                <h2>Add new topic</h2>
+                <form method = "post" action="/create-topic?id=<%=locals.user.id%>">
+                    <input type="text" name = content>
+                    <input type="submit" value = "ADD">
+                </form>
+            </div>    
+
+
+            <% for(let topic of user.topics){%>
+            <div class="topicList">
+                <input type="checkbox" id="check">
+
+                <label for="check" class = "topicheading">
+                    <h2> <%=topic.content%> </h2>
+                </label>
+                
+                <div class = "Questions">
+                    <div class = "qForm">
+                        <form method="post" action="/create-question?id=<%=topic.id%>">
+                            <input type="text" name = "content"placeholder="Name of Question">
+                            <input type = "text" name="link" placeholder="Link of the Question">
+                            
+                            <input type = "submit" value ="ADD">
+                        </form>    
+                    </div>
+                    <hr>
+
+                    <% for(let question of topic.questions){%>
+                    <div class="qDisplay">
+                        <a href = "<%=question.link%>">
+                            <%=question.content%>
+                        </a> 
+                    </div>
+                
+                            
+            <%}%>
+            <br>
+            <br>
+
+
+
+               </div>
+            </div>
+           <%}%>     
+        </main>
+
+
+
+
+
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </body>
+</html>
+
+
+
+
+<!-- 
+
+    
+
+ 
+    
+ -->
