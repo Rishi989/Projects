@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="home.css">
+    </head>
+    <body>
+        <header>
+            <h1>Facebook</h1>
+            <div id="login">
+            <% if(locals.user){%>
+                <a href="/sign-out"><button>Sign-Out</button></a>
+                
+            <%}else{%>
+            <a href="/sign-in"><button>Sign-In</button></a>
+            <a href="/sign-up"><button>Sign-Up</button></a>
+            <%}%>
+
+        </div>
+        </header>
+        <main>
+            <div id="feed-post">
+                <form action="/post" method="post">
+                    <textarea name="content" rows="5" cols="35" placeholder="Add New post here... "></textarea>
+                    <input type="submit" value="post">
+                </form>
+            </div>
+        </main>
+        <section id="post-sections">
+            <ul>
+            <% for(let i of postCont){%>
+                <li><%= i.content %> </li>    
+            <%}%>
+            </ul>
+        </section>
+
+    </body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Fascinate&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="./expense.css">
+</head>
+
+<body>
+    <div id="main">
+        <div id="left" >
+            <div id="head">
+                <h1 >Expense</h1>
+                <h2 >Tracker</h2>
+            </div>
+                <div id="budget">
+                    
+                </div>
+        <div id="chart">
+            <canvas id="piechart" ></canvas>
+        </div>
+
+        <div style="display: flex;">
+            <p>Saving :<span id="varS"><%= save %></span> </p>
+            <p>Investment :<span id="varI"><%= invest %></span></p>
+            <p>Expenses :<span id="varE"><%= expense %></span></p>
+        </div>
+        </div> 
+        <div id="right">
+            <h1>Track Your Budget</h1>
+            <a href="/sign-out" id="sign-out" role="button">Sign-Out</a>
+           <hr  size="1"  noshade>
+            
+            <div >
+                <form action="/expense-form" method="POST" id="in">
+                    <div id="form">
+                        <div id="text">
+                            <input name="discription" id="Discription" type="text" placeholder="Discription">   
+                            <input name ="amount"id="Amount" type="text" placeholder="Amount">
+                            
+                        </div>
+
+                        <div id="radio">
+        
+                            <label ><input id="Expense" name="Expense" type="radio">Expense </label>
+                            <label ><input id="Investment" name="Investment" type="radio">Investment</label>
+                            <label ><input id="Saving" name="Saving" type="radio">Saving</label>
+                        </div> 
+                    </div>
+                    <button type="Submit" id="btn">
+                        
+                        <img src="./img/tick.png" >
+                        
+                    </button>
+                    
+                </form>
+                
+            </div>
+        <!-- //////////////////////////// NOTES /////////////////////////-->
+            <div id="list">
+                <% for(let i of array){%>
+                <div class="element">
+                    
+                        <p><%= i.date %></p>
+                        <p><%= i.discription %></p>
+                        <p><%= i.type %></p>
+                        <p><%= i.amount %></p>
+                        <a href="/delete?id=<%=i._id%>"><img src="./img/cross.png" alt=""></a>
+                </div>
+                <%}%>
+                
+            </div>
+            
+        <!-- /////////////////////////////////////////////////////////// -->
+        </div>
+    </div>
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script >
+        
+         let save = parseInt(document.getElementById("varS").innerText);
+         let invest = parseInt(document.getElementById("varI").innerText);
+         let expense = parseInt(document.getElementById("varE").innerText);
+        data = {
+            datasets: [{
+                data: [expense ,invest,save],
+                backgroundColor: [
+                    'hsl(0, 94%, 51%)',
+                    'hsl(64, 100%, 59%)',
+                    'hsl(160, 94%, 51%)',
+                    
+                ],
+                borderColor: [
+                    'hsl(0, 94%, 51%)',
+                    'hsl(64, 100%, 59%)',
+                    'hsl(160, 94%, 51%)',
+                    
+                ],
+                borderWidth: 1
+            }],
+
+            // These labels appear in the legend and in the tooltips when hovering different arcs
+            labels: [
+                'Expenses',
+                'Investments',
+                'Savings'
+            ]
+        };
+        const config = {
+            type: 'doughnut',
+            data: data,
+            options: {}
+        };
+        let ctx = document.getElementById("piechart")
+        myLineChart = new Chart(ctx, config);
+    </script>
+</body>
+
+</html>
