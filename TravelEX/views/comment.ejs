@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="/js/commentAjax.js"></script> -->
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/comment.css">
+    <title>
+        <%= title %>
+    </title>
+</head>
+<body>
+
+    <script>
+        
+        let flashSucc = '<%= flash.success %>';
+        
+         
+         if( flashSucc){
+            new Noty({
+                theme: 'mint',
+                text : flashSucc,
+                type: 'success',
+                layout : 'topRight',
+                timeout: 10000,
+                progressBar:true,
+            }).show();       
+        } 
+
+
+        let flasherr = '<%= flash.error %>';
+        
+
+         if(flasherr){
+            new Noty({
+                theme: 'mint',
+                text: flasherr,
+                type : "error",
+                layout : 'topRight',
+                timeout: 5000,
+                progressBar:true,
+            }).show();
+        } 
+                
+            
+    
+    
+        </script>
+    
+    <header>
+ 
+        <div id="heading">
+            <h1>
+                <a href="/profile">Travel EX</a>
+                
+            </h1>
+        </div>
+        <div id="signOutDiv">
+            <a href="/sign-out"><button>Sign Out</button></a>
+        </div>
+    </header>
+    <main>
+        <!-- ///////////left/////////// -->
+        <div id="left">
+        </div>
+        <!-- //////////Mid////////// -->
+
+        <div id="mid">
+            <% if( locals.user.id == posts.user.id){  %>
+                <a href="/delete-post?id=<%=posts._id%>" id="deletePost">
+                    <button >Delete Post</button>
+                </a>
+            <%} %>
+            <div class="postElement">
+                <div class="PEprofile">
+                    <div class="postImage"></div>
+                    <h2><%= posts.user.name %></h2>
+                </div>
+                <div class="PEcontent">
+                    <p style="font-size:1.3rem;"><%= posts.content %></p>
+                </div>
+            </div>
+
+            <div id="addComment">
+                <div id="addCp">
+                    <div id="comImg"></div>
+                    <h2>
+                        <%= locals.user.name %>
+                    </h2>
+                </div>
+                <div id="addCoform">
+                    <form action="/comment-create" id="commentForm" method="post">
+                        <input type="text" id="inputC" name="content" placeholder="Say Something.." required>
+                        <input type="hidden" name="post" value= <%= posts.id %> >
+                        <input type="submit" id="submitC" value ="Add Comment">
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <div id="commentSection" style="display: flex; flex-direction:column;">
+
+            
+            <% for(let comments of posts.comments){%>
+                <div id="comments<%=comments._id%>">
+                    <div class="comElement">
+                        <div class="commentDisplay">
+                            <div class="CDimg"></div>
+                            <div class="commentD">
+                                <div class="Cname">
+                                    <h3><%= comments.user.name %></h3>
+                                </div>
+                                <div class="Ccomment">
+                                    <p><%= comments.content %></p>
+                                </div>
+        
+                            </div>
+                        </div>
+                        <%if(locals.user.id == comments.user.id){%>
+                
+                        <a class="commentDelete<%= comments._id %>" href="/comment-delete?id=<%=comments._id%>">
+                                <div class="comDelete"></div>
+                        </a>
+                        
+                        <%}%>
+                        </div>
+                </div>
+                
+            <%}%>
+            
+                
+            </div>
+        </div>
+
+        <!-- /////////Right////////// -->
+        <div id="right"></div>
+    </main>
+
+
+    <!-- <script src="/js/commentAjax.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+</body>
+</html>

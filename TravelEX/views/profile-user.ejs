@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ///////Font//////////// -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amaranth&family=Damion&family=Fredoka+One&family=Monoton&display=swap" rel="stylesheet">
+
+    <!-- /////////////////////// -->
+
+    <link rel="stylesheet" href="/css/profile-user.css">
+    <title>
+        <%= users.name %>
+    </title>
+</head>
+<body>
+    <header>
+        <div id="heading">
+            <h1>
+                <a href="/profile">Travel EX</a>
+                
+            </h1>
+        </div>
+    </header>
+    
+    <main>
+        <div id="left">
+            <a href="/profile" class="leftlink">
+                <div class="leftElem" id="home">
+                    <img src="/img/home2.png" >
+                </div>
+            </a>
+
+            <a href="/user-profile?id=<%= locals.user._id %>" class="leftlink">
+                <div class="leftElem" id="profile">
+                    <img src="/img/user.png" alt="">
+                </div>
+            </a>
+            <a href="#" class="leftlink">
+                <div class="leftElem" id="message">
+                    <img src="/img/message1.png" >
+                </div>
+            </a>
+            <a href="poopUpPost" class="leftlink">
+                <div class="leftElem"  id="add">
+                    <img style="width: 3rem;" src="/img/add1.png" alt="">
+                </div>
+            </a>
+            
+                
+        </div>
+        <!-- //////////// MID///////////// -->
+
+
+        <!-- ///Main Profile/// -->
+        <div id="mid">
+            <div id="images">
+                <div id="background">
+                    <img src="<%= users.backgroundImage %>" alt="backgroundImage" >
+                </div>
+                <div id="profileImage">
+                    <img style="border-radius: 50%;" src="<%= users.profileImage %>" alt="">
+                </div>
+            
+                <%if(locals.user.id == users.id){%>
+                    <div id="editProfile">
+                        <button id="edit">
+                            Edit Profile
+                        </button>
+                    </div>            
+                <%}else{%>
+                    <div id="addFriend">
+                        <a href="#">
+                            <button>Add Friend</button>
+                        </a>
+                    </div> 
+                <%}%>
+                <div id="Name">
+                    <h1>
+                        <%= users.name %>
+                    </h1>
+                </div>
+            </div>
+        
+        <!-- ///User Posts/// -->
+            <div id="POSTUser">
+                <h2 id="postHeading">Posts</h2>
+                <hr style="background-color:#eff3f4; border: 0.1px solid #eff3f4;">
+                <div id="postDisplay">
+                    <% for(let post of users.posts) { %>
+                        <% let userName = locals.user.name %>
+                        <!-- ////// lenght of likes /////          -->
+                            <% let countL =0 %>
+                                <% for(let j of post.likes){%>
+                                    <% countL++ %>    
+                            <%}%>
+                        <!-- //////// lenght of comment ///// -->
+                            <% let countC =0 %>
+                            <% for(let j of post.comments){%>
+                                <% countC++ %>    
+                            <%}%>
+                        <!-- /////////////////////////////// -->
+                        <div class="postElement">
+                            <div class="PEprofile">
+                                <div class="postprofileImage">
+                                    <img src="<%= users.profileImage %>" alt="profile">
+                                </div>
+                                <div>
+                                <h2><%=users.name %></h2>
+                                </div>
+                                
+                            </div>
+                            <div class="PEcontent">
+                                <p style="font-size:1.3rem;"><%= post.content %></p>
+                            </div>
+                            <div class="PEbtn">
+                                <div class="likeCommentButton">
+                                    <a href="/create-like?id=<%= post._id %>&type=Post">
+                                        <img src="img/like.png">    
+                                    </a>
+                                    <h3 class="Count"><%= countL %></h3>
+
+                                </div>
+                                <div class="likeCommentButton">
+                                    <a href="/comment?id=<%= post._id %>" id="commentLink" ><img src="img/comment.png"></a>
+                                    <h3 class="Count"><%=countC%></h3>
+                                </div>
+                                <div>
+                                    <a href="/share"><img src="img/share.png"></a>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <%}%>
+                    
+                    </div>
+            </div>
+        </div>
+        <div id="right"></div>
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- /////////////////////////////////////////////////////////// -->
+    <div id="poopBackground">
+        
+        <div id="poopWindow">
+            <div id="close">
+                <h1>+</h1>
+            </div>
+            <h2>Edit Profile</h2>
+            <div id="updateUser">
+                <form action="/user-update" enctype="multipart/form-data" method="post">
+                    <input type="text" name="name" placeholder="Update Your Name">
+                    <input type="submit" value="save">
+                </form>
+            </div>
+            <div id="updateProfile" >
+                <h3>Add Your Profile Image</h3>
+                <form action="/profileImage?id=<%=users.id%>" enctype="multipart/form-data" method="post">
+                    <input  type="file" name="profile">
+                    <input type="submit" value="submit">
+                </form>
+            </div>
+            
+            <div id="updateBack">
+                <h3>Add Your Background Image</h3>
+                <form action="/backgroundImage?id=<%=users.id%>" enctype="multipart/form-data" method="post">
+                    <input  type="file" name="background">
+                    <input type="submit" value="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+       
+</body>
+
+
+<script>
+    let edit = document.getElementById('edit')
+    let close = document.getElementById('close');
+    edit.addEventListener('click',function(){
+        document.getElementById('poopBackground').style.display = 'flex'
+    })
+    close.addEventListener('click',function(){
+        document.getElementById('poopBackground').style.display = 'none'
+    })
+</script>
+</html>

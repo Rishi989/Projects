@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/profile.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+    <link rel="stylesheet" href="/css/left-right-profile.css">
+    
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="/js/flashMessage.js"></script> -->
+    <title>
+        <%= title %>
+    </title>
+</head>
+<body>
+
+
+    <!-- /////////////// IT NOTY.JS FOR NOTIFICATION//////// -->
+    <script>
+        
+        let flashSucc = '<%= flash.success %>';
+        
+         
+         if( flashSucc){
+            new Noty({
+                theme: 'mint',
+                text : flashSucc,
+                type: 'success',
+                layout : 'topRight',
+                timeout: 10000,
+                progressBar:true,
+            }).show();       
+        } 
+
+
+        let flasherr = '<%= flash.error %>';
+        
+
+         if(flasherr){
+            new Noty({
+                theme: 'mint',
+                text: flasherr,
+                type : "error",
+                layout : 'topRight',
+                timeout: 5000,
+                progressBar:true,
+            }).show();
+        } 
+                
+            
+    
+    
+        </script>
+    <!-- /////////////// HEADER /////////// -->
+    <header>
+        <div id="heading">
+            <h1>
+                <a href="/profile">Travel EX</a>
+                
+            </h1>
+        </div>
+        <div id="signOutDiv">
+            <a href="/sign-out"><button>Sign Out</button></a>
+        </div>
+    </header>
+    
+    
+    <main>
+        <!-- ///////////left/////////// -->
+        <div id="left">
+            <a href="/profile" class="leftlink">
+                <div class="leftElem" id="home">
+                    <img src="/img/home2.png" >
+                </div>
+            </a>
+
+            <a href="/user-profile?id=<%= locals.user._id %>" class="leftlink">
+                <div class="leftElem" id="profile">
+                    <img src="/img/user.png" alt="">
+                </div>
+            </a>
+            <a href="#" class="leftlink">
+                <div class="leftElem" id="message">
+                    <img src="/img/message1.png" >
+                </div>
+            </a>
+            <a  class="leftlink">
+                <div class="leftElem"  id="add">
+                    <img style="width: 3rem;" src="/img/add1.png" alt="">
+                </div>
+            </a>
+            
+                
+        </div>
+        
+        <!-- //////////Right////////// -->
+        <div id="mid">
+            <!-- ///////////////Post-Creation ////////// -->
+            <div id="postCreation">
+                <div id="postProfile">
+                    <a href="/user-profile?id=<%=locals.user.id%>">
+                        <div id="profileImage">
+                            <img src="<%=locals.user.profileImage%>" alt="">
+                        </div>
+                    </a>
+                    <h1 id="currentUser"><%= locals.user.name %></h1>
+                </div>
+
+                <!-- ////// FORM FOR POST ////// -->
+                <div id="postInput">
+                    <form action="/create-post?id=<%=locals.user.id%>" enctype="multipart/form-data" method="POST" id="post-form">
+                        <input type="text" name="content" id="input" placeholder="What's in your Mind?" required>
+                        <input type="hidden" name="userId" value="<%= locals.user._id%>">
+                        
+                </div>
+                <div >
+                    <input type="file" name="postImage" id="uploadFile">
+                    <img src="/img/camera.png" alt="" id="camera">
+                </div>
+                <div id="postIcon">
+                    <input type="Submit" value="Add" >
+                </div>
+                </form>
+            </div>
+
+            <!-- ////////Post-Display///////////// -->
+            <div id="postDisplay">
+                <% for(let post of posts) { %>
+                    <% let userName = locals.user.name %>
+                    <!-- ////// lenght of likes /////          -->
+                        <% let countL =0 %>
+                            <% for(let j of post.likes){%>
+                                <% countL++ %>    
+                        <%}%>
+                    <!-- //////// lenght of comment ///// -->
+                        <% let countC =0 %>
+                        <% for(let j of post.comments){%>
+                            <% countC++ %>    
+                        <%}%>
+                    <!-- /////////////////////////////// -->
+                    <div class="postElement">
+                        <div class="PEprofile">
+                            <a href="/user-profile?id=<%=post.user.id%>">
+                                <div class="postprofileImage">
+                                    <img src="<%= post.user.profileImage %>" alt="profile">
+                                </div>
+                            </a>
+                            <div>
+                            <h2><%= post.user.name %></h2>
+                            </div>
+                            
+                        </div>
+                        <div class="PEcontent">
+                            <p><%= post.content %></p>
+                            <img src="<%= post.postImage%>" alt="">
+                        </div>
+                        <div class="PEbtn">
+                            <div class="likeCommentButton">
+                                <a href="/create-like?id=<%= post._id %>&type=Post">
+                                    <img src="img/like.png">    
+                                </a>
+                                <h3 class="Count"><%= countL %></h3>
+
+                            </div>
+                            <div class="likeCommentButton">
+                                <a href="/comment?id=<%= post._id %>" id="commentLink" ><img src="img/comment.png"></a>
+                                <h3 class="Count"><%=countC%></h3>
+                            </div>
+                            <div>
+                                <a href="/share"><img src="img/share.png"></a>
+                            </div>
+                        </div>
+                    </div>
+                
+                <%}%>
+                
+                </div>
+
+        </div>
+
+        <!-- /////////Mid///////////// -->
+        <div id="right">
+            <div id="search">
+                <form action="" method="post">
+                    <input type="text" placeholder="Search">
+                    <input type="submit" value="O">
+                </form>
+            </div >
+            <div id="userList">
+
+            
+
+                <% for(let user of users){%>
+                    <% if(user._id != locals.user.id){%>
+                        <div class="userElem">
+                            <a href="/user-profile?id=<%=user.id%>">
+                                <div class="profileRight">
+                                    <img src="<%= user.profileImage %>">
+                                </div>
+                                <h3><%=user.name%></h3>
+                            </a>
+                        </div>
+                    <%}%>
+                <%} %>
+
+            </div>
+                
+
+        </div>
+    </main>
+
+
+    
+    
+
+
+
+
+
+
+
+
+    <!-- /////////////////////////////////////////////////////////// -->
+    <div id="poopPostBackground">
+        
+        <div id="poopPostWindow">
+            <div id="closePost">
+                <h1>+</h1>
+            </div>
+            <h2>Creat Post</h2>
+            <div id="postCreation">
+                <div id="postProfile">
+                    <a href="/user-profile?id=<%=locals.user.id%>">
+                        <div id="profileImage">
+                            <img src="<%=locals.user.profileImage%>" alt="">
+                        </div>
+                    </a>
+                    <h1 id="currentUser"><%= locals.user.name %></h1>
+                </div>
+
+                <!-- ////// FORM FOR POST ////// -->
+                <div id="postInput">
+                    <form action="/create-post?id=<%=locals.user.id%>" enctype="multipart/form-data" method="POST" id="post-form">
+                        <input type="text" name="content" id="input" placeholder="What's in your Mind?" required>
+                        <input type="hidden" name="userId" value="<%= locals.user._id%>">
+                        
+                </div>
+                <div >
+                    <input type="file" name="postImage" id="uploadFile">
+                    <img src="/img/camera.png" alt="" id="camera">
+                </div>
+                <div id="postIcon">
+                    <input type="Submit" value="Add" >
+                </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+    
+
+       
+</body>
+
+
+<script>
+    let add = document.getElementById('add')
+    let closePost = document.getElementById('closePost');
+    add.addEventListener('click',function(){
+        document.getElementById('poopPostBackground').style.display = 'flex'
+    })
+    closePost.addEventListener('click',function(){
+        document.getElementById('poopPostBackground').style.display = 'none'
+    })
+</script>
+    <!-- <script src="/js/flashMessage.js"></script> -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.5.0/socket.io.js"></script>
+    <script src="/js/Frontend_chat_socket.js"></script>
+    <% if(locals.user){%>
+        <script>
+            new chatEngine('<%= locals.user.email %>')
+        </script>    
+    <%} %>
+
+
+</body>
+
+
+</html>
