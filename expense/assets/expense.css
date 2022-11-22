@@ -1,0 +1,299 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+#main{
+    min-height: 100vh;
+    
+    /* width: 100vw; */
+
+}
+#left{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    top: 0px;
+    width: 40%;
+    background-color: hsl(207, 100%, 59%);
+    justify-content: space-between;
+/* #7fffd4 */
+
+}
+#head{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    margin-top: 3vh;
+}
+#right{
+    min-height: 100vh;
+    width: 60%;
+    position: absolute;
+    float: left;
+    left: 40%;
+    top: 0px; 
+    background-color: rgb(255, 255, 255);
+    /* display: grid; */
+
+
+}
+#right h1{
+    /* border: 2px solid; */
+    padding: 10px;
+    margin: 1.5rem 0px 1rem 0px;
+    /* margin-bottom: 15rem; */
+    font-size: 4.5vw;
+
+}
+
+
+#head h1{
+    font-size: 7.5vw;
+    margin-right: 1rem;
+}
+#head h2{
+    font-size: 3.5vw;
+    margin-left: 10rem;
+    margin-right: 1rem;
+}
+
+#piechart{
+    margin-bottom: 3rem;
+    /* border: 2px solid; */
+    height: 50%
+}
+
+
+
+
+
+#form{
+    display: flex;
+    flex-direction: column;
+    height: 4rem;
+    justify-content: space-around;
+    /* font-size: 3.2vw; */
+    margin-left: 6vw;
+    margin-top: 1rem;
+    align-items: center;
+}
+#text input{
+    
+    border-radius: 15px;
+    margin-left: 0.5rem;
+    padding: 0.51vw 1vw;
+    width: 25vw;
+
+}
+
+#text{
+    display: flex;
+}
+#radio{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 6vw;
+    font-size: 2vw;
+    /* width: 88%; */
+    
+}
+
+.element{
+    /* border-left: 1px solid; */
+    margin-top: 2px;
+    font-size: 1.5vw;
+    height: 4vw;
+    width: 90%;
+    padding: 1vw;
+    margin: auto;
+    border-bottom: 1px solid;
+    /* margin-bottom: 7px; */
+    
+    display: grid;
+    
+    grid-template-columns: 25% 25% 35% auto auto;
+}
+
+#in{
+    display: grid;
+    grid-template-columns: 85% auto;
+    column-gap: 5vw;
+    margin-bottom: 3rem;
+}
+#in button{
+    width: 2.5vw;
+    height: 2.5vw;
+    /* text-align: center; */
+    margin-top: auto;
+    margin-bottom: auto;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+
+#in button img{
+    width: 2.5vw;
+}
+#chart{
+    width: 17rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+#budget{
+    font-size: 1.5rem;
+    color: azure;
+    display: flex;
+    align-items: center;
+}
+#bud{
+    
+    text-shadow: 2px 2px black;
+    font-weight: bold;
+    display: inline-block;
+    color: azure;
+    font-size: 3.5rem;
+
+}
+#budgetInput{
+    border: 2px solid;
+    width: 14rem;
+    display: inline-block;
+    height: 4rem;
+    background-color: azure;
+    box-shadow: 0px 5px 3px rgb(94, 92, 92);
+    border-radius: 20px;
+    text-align: center;
+    color: #000;
+    font-size: 3rem;
+
+}
+
+#list a img {
+    width: 2.5vw;
+    height: 2.5vw;
+    position: absolute;
+    left: 91%;   
+}
+#list a{
+    cursor: pointer;
+}
+
+#sign-out{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: crimson;
+    color: aliceblue;
+}
+
+@media screen and (max-width:480px) {
+    #main{
+        display: flex;
+        flex-direction: column;
+    }
+    #left{
+        width: 100vw;
+        position: relative;
+
+    }
+    #right{
+        width:100vw;
+        position: relative;
+        left: 0px;
+    }
+    #expense{
+        font-size: 20vw;
+    }
+    #track{
+        font-size: 10vw;
+    }#budgetInput{
+        
+        font-size: 2.3rem;
+        color: black;
+        width: 10rem;
+        height: 3rem;
+    }#bud{
+        font-size: 2.r8em;
+        margin-left: 4px;
+        
+        
+    }
+    #right h1{
+        font-size: 2rem;
+    }#text input{
+        width: 10rem;
+    }#radio{
+        font-size: 1rem;
+    }#btn{
+        height: 1.5rem;
+        width: 1.5rem;
+    }#in button img{
+        width: 1.5rem;
+    }#clear{
+        top: 3rem;
+    }
+}
+
+@media screen and (min-width:480px) and (max-width:760px) {
+    #main{
+        display: flex;
+        flex-direction: column;
+    }
+    #left{
+        width: 100vw;
+        position: relative;
+
+    }
+    #right{
+        width:100vw;
+        position: relative;
+        left: 0px;
+    }
+    #expense{
+        font-size: 15vw;
+    }
+    #track{
+        font-size: 10vw;
+    }#chart{
+        width: 20rem;
+    }#budgetInput{
+        font-size: 2.8rem;
+    color: black;
+    width: 11rem;
+    height: 4rem;
+    }
+    #bud{
+        font-size: 4rem;
+    
+    
+    }
+    #budget{
+        font-size: 2rem;
+    }#clear{
+        top: 3rem;
+    }
+}
+@media screen and (min-width:760px) and (max-width:1024px){
+    
+    #budgetInput{
+    font-size: 2.3rem;
+    color: black;
+    width: 11rem;
+    height: 3rem;
+    }#bud{
+        font-size: 2.8rem;
+    
+        
+    }
+    
+    #budget{
+        font-size: 1.3rem;
+    }
+
+}
