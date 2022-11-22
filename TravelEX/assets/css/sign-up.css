@@ -1,0 +1,81 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    background-image:url("../img/travel2.webp") ;
+    background-size: cover;
+    background-repeat:no-repeat ;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+}
+#content{
+    display: flex;
+    height: 75%;
+    width: 35%;
+    flex-direction: column;
+    border: 2px solid;
+    background-color: #ced3dd85;
+}
+
+#content h2{
+    height: 37%;
+    margin: 5px;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+#content form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#login{
+    border: 2px solid;
+    width: 35%;
+    height: 10%;
+    margin-top: 2rem;
+    text-align: center;
+    background-color: #ced3dd85
+}
+
+#content h2 div{
+    
+    font-size: 3.3rem;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    font-family: Damion;
+
+}
+
+#content form input{
+    margin: 7px;
+    width: 85%;
+    padding: 5px;
+    font-size: 1rem;
+}
+
+#sign-upbtn{
+    background-color: #0076ff;
+    color: white;
+    border: none;
+    height: 2rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+#login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#login a{
+    color: #0076ff;
+    text-decoration: none;
+}

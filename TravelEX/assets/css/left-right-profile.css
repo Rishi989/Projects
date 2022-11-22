@@ -1,0 +1,57 @@
+.leftElem{
+    width: 7vw;
+    max-width: 4rem;
+    height: 7vw;
+    max-height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4vh;
+    
+}
+.leftElem img{
+    width: 2rem;
+}
+
+
+.leftlink{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#search{
+    padding: 10px 3px;
+}
+#search input{
+    padding: 2px 5px;
+    border-radius: 15px
+}
+.userElem a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+.profileRight{
+    width: 2rem;
+    height: 2rem;
+    background-color: beige;
+    border-radius: 50%;
+    margin: 5px;
+}
+
+.profileRight img{
+    width: 2rem;
+    height: 2rem;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#userList{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 1rem;
+}
+

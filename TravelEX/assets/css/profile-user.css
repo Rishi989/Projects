@@ -1,0 +1,302 @@
+/* ///////HEADER/////// */
+*{
+    margin: 0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+
+
+
+
+
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    position: fixed;
+    z-index: 1;
+    height: 10vh;
+    width: 100%;
+}
+
+#heading{
+    margin-top: 4px;
+    font-size: 1.1rem;
+    margin-left: 1rem;
+}
+
+#heading a{
+    text-decoration: none;
+    color: white;
+}
+
+
+/* /////////////////MAIN//////////// */
+
+main{
+    display: flex;
+    
+}
+/* //////////////////left/////////////////////////// */
+
+#left{
+    width: 15vw;
+    height: 90vh;
+
+    position: fixed;
+    top: 10vh;
+}
+.leftElem{
+    width: 7vw;
+    max-width: 4rem;
+    height: 7vw;
+    max-height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4vh;
+    
+}
+.leftElem img{
+    width: 2rem;
+}
+
+
+.leftlink{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* ////////////////////////Mid/////////////////////////////////////////////////////////////// */
+
+#mid{
+    width: 60vw;
+    background-color: white;
+    position: relative;
+    top: 10vh;
+    left: 15vw;
+}
+#images{
+    height: 80vh;
+    width: 100%;
+    border: 1px solid #eff3f4;
+    position: relative;
+}
+#background{
+    height: 65%;
+    width: 100%;
+    background-color: blueviolet;
+}
+#profileImage{
+    height: 10rem;
+    width: 10rem;
+    position: relative;
+    border-radius: 50%;
+    background-color: white;
+    top: -5rem;
+    left: 1rem;
+    box-shadow: 0px 0px 20px;
+}
+#background img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+#profileImage img{
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 50%;
+}
+#editProfile{
+    top: 55vh;
+    position: absolute;
+    right: 1rem;
+}
+#editProfile button{
+    font-size: 1.3rem;
+    padding: 3px 10px;
+    border: none;
+    border-radius: 15px;
+    background-color: #ff2f2f;
+    color: white;
+    cursor: pointer;
+
+}
+#addFriend{
+    top: 55vh;
+    position: absolute;
+    right: 1rem;
+}
+#addFriend button{
+    font-size: 1.3rem;
+    padding: 3px 10px;
+    border: none;
+    border-radius: 15px;
+    background-color: #3c4fff;
+    color: white;
+    cursor: pointer;
+}
+
+#Name{
+    font-family:'Amaranth', cursive;
+    position: absolute;
+    bottom: 2rem;
+    left: 1rem;
+}
+
+
+
+
+
+/* ///User Posts/// */
+
+#postDisplay{
+    
+    padding: 10px;
+    max-width: 35rem;
+    margin: 0px auto;
+}
+    
+#postHeading{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+#POSTUser{
+    border: 1px solid #eff3f4;
+}
+
+
+
+.postElement{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #eff3f4 ;
+}
+.PEprofile{
+    height: 3rem;
+    display: flex;
+    align-items: center;
+}
+.postprofileImage{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    margin-left: 3px;
+    margin-right: 5px;
+}
+.postprofileImage img{
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.PEcontent{
+    margin-left: 3rem;
+    padding: 1.3rem;
+    
+}
+.PEbtn{
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.PEbtn div a img{
+    width: 1.3rem;
+    height: 1.3rem;
+    
+}
+
+.likeCommentButton{
+    display: flex;
+    align-items: flex-end;
+    
+}
+.Count{
+    font-size: 1.5rem;
+    margin: 0px 12px;
+}
+
+
+
+
+
+
+
+
+/* ////////////////////////Right /////////////// */
+
+
+#right{
+    width: 25vw;
+    height: 90vh;
+    background-color: aquamarine;
+    position: fixed;
+    top: 10vh;
+    left: 75vw;
+}
+
+
+
+
+
+/* ///////////////// poop up //////// */
+#poopBackground{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+#poopWindow{
+    width: 50vw;
+    height: 60vh;
+    background-color: white;
+    border-radius: 15px;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+}
+
+#poopWindow h2{
+    font-size: 2rem;
+    font-family: cursive;
+    margin-bottom: 1rem;
+}
+
+
+
+#close{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 1rem;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+#poopWindow div{
+    margin: 1.2rem 5px;
+}
+#poopWindow input{
+    font-size: 1rem;
+}
+#poopWindow input[type='submit']{
+    color: white;
+    background-color: cornflowerblue;
+    padding: 5px 10px;
+    text-transform: capitalize;
+    border-radius: 5px;
+}
+#poopWindow input{
+    padding: 5px 10px;
+    text-transform: capitalize;
+    border-radius: 5px;
+}
