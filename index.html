@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Api Project</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="index.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Palette+Mosaic&display=swap"
+        rel="stylesheet">
+    <!-- font-family: 'Dela Gothic One', cursive;
+    font-family: 'Palette Mosaic', cursive; -->
+
+</head>
+
+<body>
+    <div id="container">
+        <div class="container">
+
+            <div id="heading-container">
+                <h1 id="heading">CloudPoint</h1>
+
+            </div>
+            <div id="search">
+
+                <input id="input" type="text">
+                <button id="searchbtn">
+
+                    <img src="Search.png" alt="">
+                </button>
+
+                <!-- //// logo -->
+            </div>
+        </div>
+
+    </div>
+    <div id="content">
+
+
+        <div class="weather-container">
+            <h2 id="city">City</h2>
+            <div id="temp-icon" style="display: flex; justify-content: space-around">
+                <div id="icon" style="margin: 12px 10px">
+                    <img id="icon2" src="sunny icon.png" alt="">
+                    <div id="discr">
+                        Sunny/Clear Sky
+                    </div>
+                </div>
+                <div id="temp">
+                    11&#176
+                </div>
+
+
+
+            </div>
+            <div id="speed">
+                <div id="speedV" style="margin-right:2em ;">Wind-Speed</div>
+                <div id="wind">33kmph</div>
+            </div>
+            <div id="humhead">
+                <div id="humVe" style="margin-right: 2em;">Humidity</div>
+                <div id="humidity">222 %</div>
+            </div>
+
+        </div>
+        <div id="dt">
+            <div id="dthead">Asia/City</div>
+
+            <div id="time" style="display: flex; align-items: flex-end;">
+                <h2 id="hrs">5:30</h2>
+                <h3 id="ampm"></h3>
+            </div>
+            <div id="date">
+                <h4> Jan, 23 2022</h4>
+            </div>
+        </div>
+    </div>
+    <div id="footer-heading">
+        <h2 id="footer-head">Past weather Reports of Kolkata</h2>
+        <div id="footer">
+            <div class="future" id="first">
+                <p id="fhead">mon</p>
+                <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="">
+                <p id="ftemp"> Day : 11&#176</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
